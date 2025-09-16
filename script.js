@@ -68,6 +68,12 @@ function initHeroSlider() {
     const heroImages = document.querySelectorAll('.hero-bg-img');
     let currentImage = 0;
 
+    // Preload images for faster switching
+    heroImages.forEach(img => {
+        const preloadImg = new Image();
+        preloadImg.src = img.src;
+    });
+
     function showNextImage() {
         // Hide current image
         heroImages[currentImage].classList.remove('active');
@@ -84,8 +90,8 @@ function initHeroSlider() {
         heroImages[0].classList.add('active');
     }
 
-    // Change image every 5 seconds
-    setInterval(showNextImage, 5000);
+    // Change image every 3 seconds for faster transitions
+    setInterval(showNextImage, 3000);
 }
 
 // Scroll animations
